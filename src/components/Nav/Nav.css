@@ -1,0 +1,12 @@
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-bottom: 30px;
+}
+
+a {
+    color: black;
+    text-decoration:none;
+}
