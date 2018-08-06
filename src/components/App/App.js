@@ -41,6 +41,7 @@ class App extends Component {
     }
   }
 
+  //제품을 map함수를 이용해 렌더링한다.
   renderFoodDetail() {
     return this.state.products.map(product => {
       return (
