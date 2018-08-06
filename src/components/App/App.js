@@ -65,6 +65,7 @@ class App extends Component {
     });
   }
 
+  //장바구니에 이미 제품이 있는지 확인하는 method
   checkProduct(id) {
     let cart = this.state.cart;
     return cart.some(item => {
