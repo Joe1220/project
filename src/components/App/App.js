@@ -89,6 +89,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     //cart state가 local storage에 있으면 불러오기
     let cart = localStorage.cart;
     if(cart) {

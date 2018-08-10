@@ -16,7 +16,7 @@ class Cart extends React.Component {
 
 const RenderCart = props => (
     <div className="itemContainer">
-        <img src={props.item.image} />
+        <img src={props.item.image} alt={props.item.name} />
         {props.item.name}
     </div>
 );
