@@ -1,5 +1,7 @@
 // imports
 
+import data from "MOCK_DATA.json";
+
 // actions
 
 const SET_PRODUCTS = "SET_PRODUCTS";
@@ -7,10 +9,10 @@ const SET_PRODUCTS = "SET_PRODUCTS";
 
 // action creators
 
-function setProducts(products) {
+function setProducts(items) {
   return {
     type: SET_PRODUCTS,
-    products
+    items
   };
 }
 
@@ -18,21 +20,17 @@ function setProducts(products) {
 // API Actions
 
 function getProducts() {
-    return function(dispatch) {
-        fetch("MOCK_DATA.json", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-          .then(response => response.json())
-          .then(json => {
-            if (json.token) {
-              dispatch(setProducts(json));
-            }
-          })
-          .catch(err => console.log(err));
-      };
+  return (dispatch, getState) => {
+    fetch("MOCK_DATA.json", {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+   })
+    .then(response => data)
+    .then(json => dispatch(setProducts(json)))
+    .catch(err => console.log(err));
+  };
 }
 
 
@@ -54,10 +52,10 @@ function reducer(state = initialState, action) {
 // Reducer Functions
 
 function applySetProducts(state, action) {
-  const { products } = action;
+  const { items } = action;
   return {
     ...state,
-    products
+    items
   };
 }
 

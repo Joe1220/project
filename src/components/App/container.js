@@ -6,7 +6,7 @@ class Container extends Component {
     constructor() {
         super();
         this.state = {
-          products: data,
+          products: [],
           cart: [],
           quantity: 1,
           totalAmount: 0
@@ -15,16 +15,25 @@ class Container extends Component {
     
     
     componentDidMount() {
+        this.props.getProducts()
     //cart state가 local storage에 있으면 불러오기
-    let cart = localStorage.cart;
-    if(cart) {
-        this.setState(prevState => ({
-        cart: JSON.parse(cart)
-        }), function() {
-        this.sumTotalAmount();
-        })
-    }
+        let cart = localStorage.cart;
+        if(cart) {
+            this.setState(prevState => ({
+            cart: JSON.parse(cart)
+            }), function() {
+            this.sumTotalAmount();
+            })
+        }
     };
+
+    componentWillReceiveProps = nextProps => {
+        if (nextProps.items) {
+          this.setState({
+            products: nextProps.items
+          });
+        }
+      };
     
     componentDidUpdate(prevProps, prevState) {
     if(prevState.cart !== this.state.cart) {
