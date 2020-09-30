@@ -1,1 +1,3 @@
-shopping mall project from Medium Blog
+Project- SHOPPING MALL FROM MEDIUM BLOG
+
+THANKS YOU FOR WATCHING
